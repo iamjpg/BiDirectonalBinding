@@ -26,7 +26,17 @@
 
     BiDirectionalBinding.prototype.toDom = function() {
       return watch(this.dataObj, function(prop, action, newvalue, oldvalue) {
-        return document.querySelector("[data-bdb=" + prop + "]").value = newvalue;
+        var elem;
+        elem = document.querySelector("[data-bdb=" + prop + "]");
+        if (elem.type === "checkbox" || elem.type === "radio") {
+          if (newvalue === elem.value) {
+            return elem.checked = true;
+          } else {
+            return elem.checked = false;
+          }
+        } else {
+          return elem.value = newvalue;
+        }
       });
     };
 
