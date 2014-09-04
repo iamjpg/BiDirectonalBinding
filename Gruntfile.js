@@ -36,8 +36,8 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'qunit']
+      files: ['src/BiDirectionalBinding.coffee'],
+      tasks: ['coffee']
     },
     wiredep: {
       target: {
@@ -62,6 +62,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', ['jshint', 'qunit']);
 
-  grunt.registerTask('default', ['jshint', 'qunit', 'coffee', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'coffee']);
 
 };

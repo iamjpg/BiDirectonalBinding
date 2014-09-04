@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.2.0",
-    "watch": "*"
+    "watch": "*",
+    "underscore": "~1.7.0"
   }
 }
