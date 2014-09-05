@@ -1,0 +1,23 @@
+body {
+  background: #cacaca;
+}
+
+header {
+  background: #f5f5f5;
+  padding: 50px 0;
+  color: #000;
+}
+
+header h1 {
+  font-weight: 200;
+  letter-spacing: 3px;
+}
+
+footer {
+  padding: 50px 0;
+}
+
+form {
+  background: #FFF;
+  padding: 50px 0;
+}

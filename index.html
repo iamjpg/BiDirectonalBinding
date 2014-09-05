@@ -6,63 +6,103 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <style>
-      body {
-        padding: 50px 0;
-      }
-    </style>
+    <link rel="stylesheet" href="demo/demo.css" />
+    <link rel="stylesheet" href="demo/terminal/css/jquery.terminal.css" />
   </head>
   <body>
 
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>BiDirectionalBinding.js</h1>
+          <p>A super simple two-way binding plugin written in vanilla Javascript.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <form role="form" name="theForm">
     <div class="container">
-      <div class="jumbotron">
-      <h1>Two Way Javascript Binding Made Simple</h1>
-        <p>
-          Open your Javascript console watch the `data` object change with changes to the form. Going the other way, override a value of the `data` object in the console and watch the form input change.
-        </p>
-      </div>
       <div class="row">
-        <div class="col-xs-6">
-          <div class="form-group">
-            <label for="exampleInputEmail1">First Name</label>
-            <input type="text" class="form-control" name="firstName" data-bdb="firstName" placeholder="First Name...">
+        <div class="col-sm-6">
+
+          <h2>Form</h2>
+
+          <p>
+            Enter values in the form below and see the bound javascript object change with it. Example: Enter any value you like in the First Name field. After, in the console to the right, type <code>data.firstName</code> and press Enter.
+          </p>
+
+          <div class="panel panel-default">
+            <div class="panel-body">
+
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" name="firstName" id="firstName" data-bdb="firstName" placeholder="First Name...">
+              </div>
+
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" name="lastName" id="lastName" data-bdb="lastName" placeholder="Last Name...">
+              </div>
+
+              <label for="gender">Choose Gender</label>
+              <select class="form-control" name="gender" id="gender" data-bdb="gender">
+                <option>Choose One</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+
+              <br />
+
+              <label class="checkbox-inline">
+                <input type="checkbox" name="hasEmail" data-bdb="hasEmail" value="yes"> Has Email?
+              </label>
+
+            </div>
           </div>
+
         </div>
-        <div class="col-xs-6">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Last Name</label>
-            <input type="text" class="form-control" name="lastName" data-bdb="lastName" placeholder="Last Name...">
+        <div class="col-sm-6">
+
+          <h2>Browser JS Console</h2>
+
+          <p>
+            In the console below, enter something like <code>data.firstName = "John"</code> and press enter to see the form value change.
+          </p>
+
+          <div class="well well-lg">
+            <div id="term_demo"></div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <label for="exampleInputEmail1">Choose Gender</label>
-          <select class="form-control" name="gender" data-bdb="gender">
-            <option>Choose One</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
-      </div>
-      <br />
-      <div class="row">
-        <div class="col-xs-12">
-          <label class="radio-inline">
-            <input type="radio" name="hasEmail" data-bdb="hasEmail" value="yes"> Has Email?
-          </label>
+
+
         </div>
       </div>
     </div>
   </form>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <p>This plugin was written by <a href="http://johnpatrickgiven.com">JP Given</a> and uses the awesome <a href="https://github.com/melanke/Watch.JS">WatchJS</a> library written by <a href="https://github.com/melanke">melanke</a>.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- scripts used only for demo / browser terminal plugin -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="demo/terminal/js/jquery.terminal-0.8.8.min.js"></script>
+  <script src="demo/terminal/js/init.js"></script>
+  <!-- / scripts used only for demo -->
 
 
   <script src="bower_components/watch/src/watch.js"></script>
   <script src="dist/BiDirectionalBinding.js"></script>
 
   <script>
-    data = {
+    var data = {
       firstName: null,
       lastName: null,
       gender: null,
@@ -70,7 +110,7 @@
     }
 
     var bdb = new BiDirectionalBinding({
-      name: "Fun Time!",
+      name: "Name your object whatever...",
       form: document.forms[0],
       dataObj: data
     });
