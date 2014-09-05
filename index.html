@@ -5,11 +5,7 @@
     <title>BiDirectionalBinding Example</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    
-    <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-
     <style>
       body {
         padding: 50px 0;
@@ -20,6 +16,12 @@
 
   <form role="form" name="theForm">
     <div class="container">
+      <div class="jumbotron">
+      <h1>Two Way Javascript Binding Made Simple</h1>
+        <p>
+          Open your Javascript console watch the `data` object change with changes to the form. Going the other way, override a value of the `data` object in the console and watch the form input change.
+        </p>
+      </div>
       <div class="row">
         <div class="col-xs-6">
           <div class="form-group">
@@ -56,10 +58,7 @@
   </form>
 
 
-  <!-- bower:js -->
   <script src="bower_components/watch/src/watch.js"></script>
-  <!-- endbower -->
-
   <script src="dist/BiDirectionalBinding.js"></script>
 
   <script>

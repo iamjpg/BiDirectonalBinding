@@ -3,6 +3,13 @@ class BiDirectionalBinding
     @name = options.name
     @form = options.form
     @dataObj = options.dataObj
+    @init()
+    
+  init: ->
+    if window.WatchJS is `undefined`
+      console.warn('WARNING: WatchJS is a requirement for BiDirectionalBinding. Please use the compiled file with WatchJS included or source your own version of WatchJS.')
+      return false
+      
     @toDom()
     @toObj()
 
@@ -30,8 +37,6 @@ class BiDirectionalBinding
         elem.value = newvalue
 
     )
-
-
 
   # Export to the window...
   window.BiDirectionalBinding = @

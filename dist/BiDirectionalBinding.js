@@ -9,9 +9,17 @@
       this.name = options.name;
       this.form = options.form;
       this.dataObj = options.dataObj;
-      this.toDom();
-      this.toObj();
+      this.init();
     }
+
+    BiDirectionalBinding.prototype.init = function() {
+      if (window.WatchJS === undefined) {
+        console.warn('WARNING: WatchJS is a requirement for BiDirectionalBinding. Please use the compiled file with WatchJS included or source your own version of WatchJS.');
+        return false;
+      }
+      this.toDom();
+      return this.toObj();
+    };
 
     BiDirectionalBinding.prototype.toObj = function() {
       var elems, _this;

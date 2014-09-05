@@ -28,6 +28,30 @@ module.exports = function(grunt) {
         }
       }
     },
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['bower_components/watch/src/watch.js', 'dist/BiDirectionalBinding.js'],
+        dest: 'build/BiDirectionalBinding.with.watch.js',
+      },
+    },
+    uglify: {
+      options: {
+        mangle: true
+      },
+      withWatch: {
+        files: {
+          'build/BiDirectionalBinding.with.watch.js': ['build/BiDirectionalBinding.with.watch.js']
+        }
+      },
+      withoutWatch: {
+        files: {
+          'build/BiDirectionalBinding.without.watch.js': ['dist/BiDirectionalBinding.js']
+        }
+      }
+    },
     coffee: {
       compile: {
         files: {
@@ -62,6 +86,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', ['jshint', 'qunit']);
 
-  grunt.registerTask('default', ['jshint', 'coffee']);
+  grunt.registerTask('default', ['coffee', 'concat', 'uglify']);
 
 };
